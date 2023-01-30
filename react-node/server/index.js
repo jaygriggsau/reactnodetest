@@ -20,10 +20,11 @@ app.get("/api", (req, res) => {
 const configuration = new Configuration({
   apiKey: process.env.REACT_APP_YOUR_OPENAI_API_KEY,
 });
+const openai = new OpenAIApi(configuration);
 
 app.post('/api/openai', async (req, res) => {
     try {
-      const openai = new OpenAIApi(configuration);
+      // const openai = new OpenAIApi(configuration);
 
         const response = await openai.createCompletion({
           model: "text-davinci-003",
