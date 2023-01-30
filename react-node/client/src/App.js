@@ -1,24 +1,37 @@
-import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import React, { useState } from 'react';
 
-function App() {
-  const [data, setData] = React.useState(null);
+function Form() {
+  const [text, setText] = useState('');
+  const [response, setResponse] = useState('');
 
-  React.useEffect(() => {
-    fetch("/api")
-      .then((res) => res.json())
-      .then((data) => setData(data.message));
-  }, []);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await fetch('/api/openai', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ text }),
+      });
+      const json = await res.json();
+      setResponse(json.response);
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>{!data ? "Loading..." : data}</p>
-      </header>
-    </div>
+    <form onSubmit={handleSubmit}>
+      <input
+        type="text"
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+      />
+      <button type="submit">Submit</button>
+      {response && <section>{response}</section>}
+    </form>
   );
 }
 
-export default App;
+export default Form;
