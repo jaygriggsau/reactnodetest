@@ -1,8 +1,7 @@
 const path = require('path');
 const bodyParser = require('body-parser');
 const express = require('express');
-// import { Configuration, OpenAIApi } from "openai";
-const { Configuration, OpenAIApi} = require('openai')
+const openai = require('openai')
 
 const PORT = process.env.PORT || 3001;
 
