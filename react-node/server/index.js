@@ -1,7 +1,8 @@
 const path = require('path');
 const bodyParser = require('body-parser');
 const express = require('express');
-const openai = require('openai')
+const { Configuration, OpenAIApi } = require("openai");
+
 
 const PORT = process.env.PORT || 3001;
 
@@ -19,11 +20,11 @@ app.get("/api", (req, res) => {
 const configuration = new Configuration({
   apiKey: process.env.REACT_APP_YOUR_OPENAI_API_KEY,
 });
-const openai = new OpenAIApi(configuration);
 
 app.post('/api/openai', async (req, res) => {
     try {
-        
+      const openai = new OpenAIApi(configuration);
+
         const response = await openai.createCompletion({
           model: "text-davinci-003",
           prompt: "Write a long-form piece in the style of belles-lettres about the subject, explore the different schools of thought on subject, share any tactics and strategies on the subject, and other interesting insights around the subject, who are the impactful people related to the subject, and what can we learn from them? The subject is." + subject + "Format in html with paragraph tags. Where possible add curiosity driven headings with H1 between sections.Style of belles-lettres. Format with spaces arund paragraphs and titles",
