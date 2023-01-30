@@ -28,7 +28,7 @@ function Form() {
         value={text}
         onChange={(e) => setText(e.target.value)}
       />
-      <button type="submit">Submit</button>
+      <button type="submit">Submit Prompt</button>
       {response && <section>{response}</section>}
     </form>
   );
