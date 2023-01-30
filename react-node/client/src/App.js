@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import GenerateArticle from './GenerateArticle';
 
 function Form() {
   const [text, setText] = useState('');
@@ -22,6 +23,7 @@ function Form() {
   };
 
   return (
+    <section><GenerateArticle />
     <form onSubmit={handleSubmit}>
       <input
         type="text"
@@ -30,7 +32,8 @@ function Form() {
       />
       <button type="submit">Submit</button>
       {response && <section>{response}</section>}
-    </form>
+    </form></section>
+    
   );
 }
 
