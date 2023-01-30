@@ -17,7 +17,7 @@ app.get("/api", (req, res) => {
   res.json({ message: "Hello from server!" });
 });
 
-app.post('/api/openai', async (req, res) => {
+app.post('https://aitesting.herokuapp.com/api/openai', async (req, res) => {
     try {
         const openai = new OpenAIApi(configuration);
         const response = await openai.createCompletion({
