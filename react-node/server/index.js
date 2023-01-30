@@ -7,10 +7,6 @@ const PORT = process.env.PORT || 3001;
 
 const app = express();
 app.use(bodyParser.json());
-
-const configuration = new Configuration({
-    apiKey: process.env.REACT_APP_YOUR_OPENAI_API_KEY,
-  });
   
 // Have Node serve the files for our built React app
 app.use(express.static(path.resolve(__dirname, '../client/build')));
@@ -22,6 +18,9 @@ app.get("/api", (req, res) => {
 
 app.post('/api/openai', async (req, res) => {
     try {
+        const configuration = new Configuration({
+          apiKey: process.env.REACT_APP_YOUR_OPENAI_API_KEY,
+        });
         const openai = new OpenAIApi(configuration);
         const response = await openai.createCompletion({
           model: "text-davinci-003",
@@ -37,9 +36,9 @@ app.post('/api/openai', async (req, res) => {
   });
 
 // All other GET requests not handled before will return our React app
-app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
-})
+// app.get('*', (req, res) => {
+//   res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
+// })
   
   app.listen(PORT, () => {
     console.log(`Server listening on ${PORT}`);
