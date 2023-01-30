@@ -7,7 +7,7 @@ function Form() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch('https://aitesting.herokuapp.com//api/openai', {
+      const res = await fetch('https://aitesting.herokuapp.com/api/openai', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
