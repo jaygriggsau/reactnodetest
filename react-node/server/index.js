@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 3001;
 
 const app = express();
 app.use(bodyParser.json());
-openai.apiKey = "REACT_YOUR_OPENAI_API_KEY";
+openai.apiKey = "REACT_APP_YOUR_OPENAI_API_KEY";
 
 // Have Node serve the files for our built React app
 app.use(express.static(path.resolve(__dirname, '../client/build')));
