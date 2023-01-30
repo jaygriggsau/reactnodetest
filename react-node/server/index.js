@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const openai = require('openai');
 const express = require('express');
 
-const port = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3001;
 
 const app = express();
 app.use(bodyParser.json());
@@ -38,6 +38,6 @@ app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
 })
   
-  app.listen(port, () => {
+  app.listen(PORT, () => {
     console.log(`Server listening on ${PORT}`);
   });
