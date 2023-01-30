@@ -16,22 +16,28 @@ app.use(express.static(path.resolve(__dirname, '../client/build')));
 app.get("/api", (req, res) => {
   res.json({ message: "Hello from server!" });
 });
-
+/////
 const configuration = new Configuration({
   apiKey: process.env.REACT_APP_YOUR_OPENAI_API_KEY,
 });
 const openai = new OpenAIApi(configuration);
 
+/////
+
 app.post('/api/openai', async (req, res) => {
     try {
-      // const openai = new OpenAIApi(configuration);
+      // const openai = new OpenAIApi(configuration); moved to line 23.
 
-        const response = await openai.createCompletion({
-          model: "text-davinci-003",
-          prompt: "Write a long-form piece in the style of belles-lettres about the subject, explore the different schools of thought on subject, share any tactics and strategies on the subject, and other interesting insights around the subject, who are the impactful people related to the subject, and what can we learn from them? The subject is." + subject + "Format in html with paragraph tags. Where possible add curiosity driven headings with H1 between sections.Style of belles-lettres. Format with spaces arund paragraphs and titles",
-          temperature: 0.7,
-          max_tokens: 2500,
-        });
+      const response = await openai.createCompletion({
+        model: "text-davinci-003",
+        prompt: "I am a highly intelligent question answering bot. If you ask me a question that is rooted in truth, I will give you the answer. If you ask me a question that is nonsense, trickery, or has no clear answer, I will respond with \"Unknown\".\n\nQ: What is human life expectancy in the United States?\nA: Human life expectancy in the United States is 78 years.\n\nQ: Who was president of the United States in 1955?\nA: Dwight D. Eisenhower was president of the United States in 1955.\n\nQ: Which party did he belong to?\nA: He belonged to the Republican Party.\n\nQ: What is the square root of banana?\nA: Unknown\n\nQ: How does a telescope work?\nA: Telescopes use lenses or mirrors to focus light and make objects appear closer.\n\nQ: Where were the 1992 Olympics held?\nA: The 1992 Olympics were held in Barcelona, Spain.\n\nQ: How many squigs are in a bonk?\nA: Unknown\n\nQ: Where is the Valley of Kings?\nA:",
+        temperature: 0,
+        max_tokens: 100,
+        top_p: 1,
+        frequency_penalty: 0.0,
+        presence_penalty: 0.0,
+        stop: ["\n"],
+      });
         setResult(response.data.choices[0].text);
     } catch (err) {
       console.error(err);
