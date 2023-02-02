@@ -16,7 +16,7 @@ function Form() {
       });
       const json = await res.json();
       setResponse(json.response);
-      console.log(response);
+      console.log(response + "from the server");
     } catch (err) {
       console.error(err);
     }
