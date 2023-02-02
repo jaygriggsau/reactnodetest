@@ -7,7 +7,10 @@ function Form() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch('/api/openai', {
+      const res1 = await fetch('/api', {
+        method: 'GET',
+      });
+      const res = await fetch('http://localhost:3001/api/openai', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

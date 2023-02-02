@@ -3,11 +3,15 @@ const bodyParser = require('body-parser');
 const express = require('express');
 const { Configuration, OpenAIApi } = require("openai");
 
+var cors = require('cors')
+
+require('dotenv').config({path: __dirname + '/.env'})
 
 const PORT = process.env.PORT || 3001;
 
 const app = express();
 app.use(bodyParser.json());
+app.use(cors())
   
 // Have Node serve the files for our built React app
 app.use(express.static(path.resolve(__dirname, '../client/build')));
@@ -26,6 +30,12 @@ const configuration = new Configuration({
 
 app.post('/api/openai', async (req, res) => {
     try {
+      const configuration = new Configuration({
+        apiKey: process.env.REACT_APP_YOUR_OPENAI_API_KEY,
+      });
+
+      console.log("configuration", process.env.REACT_APP_YOUR_OPENAI_API_KEY)
+      
       const openai = new OpenAIApi(configuration);
       const response = await openai.createCompletion({
         model: "text-davinci-003",
@@ -37,7 +47,7 @@ app.post('/api/openai', async (req, res) => {
         presence_penalty: 0.0,
         stop: ["\n"],
       });
-        setResult(response.data.choices[0].text);
+        return res.json({success: true, data: response.data.choices[0].text});
     } catch (err) {
       console.error(err);
       res.status(500).json({ error: 'Something went wrong' });
