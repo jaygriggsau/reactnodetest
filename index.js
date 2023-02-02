@@ -8,7 +8,7 @@ var cors = require('cors')
 require('dotenv').config({path: __dirname + '/.env'})
 
 const PORT = process.env.PORT || 3001;
-const apiKey = "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";
+const apiKey = "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";
 
 const app = express();
 app.use(bodyParser.json());
