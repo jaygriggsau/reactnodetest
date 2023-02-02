@@ -3,7 +3,8 @@ const bodyParser = require('body-parser');
 const express = require('express');
 const { Configuration, OpenAIApi } = require("openai");
 
-var cors = require('cors')
+var cors = require('cors');
+const { response } = require('express');
 
 require('dotenv').config({path: __dirname + '/.env'})
 
@@ -42,7 +43,7 @@ app.post('/api/openai', async (req, res) => {
         frequency_penalty: 0.0,
         presence_penalty: 0.0,
       });
-        return res.json({success: true, data: response.data});
+        return res.json({success: true, data: response.data.choices[0].text});
     } catch (err) {
       console.error(err);
       res.status(500).json({ error: 'Something went wrong' });
