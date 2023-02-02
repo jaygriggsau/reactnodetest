@@ -16,6 +16,7 @@ function Form() {
       });
       const json = await res.json();
       setResponse(json.response);
+      console.log(response);
     } catch (err) {
       console.error(err);
     }
