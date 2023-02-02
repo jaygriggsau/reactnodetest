@@ -35,14 +35,13 @@ app.post('/api/openai', async (req, res) => {
       const openai = new OpenAIApi(configuration);
       const response = await openai.createCompletion({
         model: "text-davinci-003",
-        prompt: "Write a unit plan for the subject.  The plan should link to the Australian curriculum for their year level and subject. The subject is English, Year 10, reading and learning about \"to kill a mockingbird\".",
-        temperature: 0.7,
-        max_tokens: 4000,
-        top_p: 1,
-        frequency_penalty: 0,
-        presence_penalty: 0,
+  prompt: "Write a unit plan for the subject.  The plan should link to the Australian curriculum for their year level and subject. The subject is English, Year 10, reading and learning about \"to kill a mockingbird\".",
+  temperature: 0.7,
+  max_tokens: 4000,
+  top_p: 1,
+  frequency_penalty: 0,
+  presence_penalty: 0,
       });
-      
         return res.json({success: true, data: response.data.choices[0].text});
     } catch (err) {
       console.error(err);
