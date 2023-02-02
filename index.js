@@ -42,7 +42,7 @@ app.post('/api/openai', async (req, res) => {
         frequency_penalty: 0.0,
         presence_penalty: 0.0,
       });
-        return res.json({success: true, data: response.data.choices[0].text});
+        return res.json({success: true, data: response.data});
     } catch (err) {
       console.error(err);
       res.status(500).json({ error: 'Something went wrong' });
