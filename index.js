@@ -8,6 +8,7 @@ var cors = require('cors')
 require('dotenv').config({path: __dirname + '/.env'})
 
 const PORT = process.env.PORT || 3001;
+const apiKey = "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";
 
 const app = express();
 app.use(bodyParser.json());
@@ -21,9 +22,6 @@ app.get("/api", (req, res) => {
   res.json({ message: "Hello from server!" });
 });
 /////
-const configuration = new Configuration({
-  apiKey: process.env.REACT_APP_YOUR_OPENAI_API_KEY,
-});
 
 
 /////
@@ -31,10 +29,9 @@ const configuration = new Configuration({
 app.post('/api/openai', async (req, res) => {
     try {
       const configuration = new Configuration({
-        apiKey: process.env.REACT_APP_YOUR_OPENAI_API_KEY,
+        apiKey,
       });
 
-      console.log("configuration", process.env.REACT_APP_YOUR_OPENAI_API_KEY)
       
       const openai = new OpenAIApi(configuration);
       const response = await openai.createCompletion({
