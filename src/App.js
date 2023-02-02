@@ -15,7 +15,7 @@ function Form() {
         body: JSON.stringify({ text }),
       });
       const json = await res.json();
-      setResponse(json.response.data.choices[0].text);
+      setResponse(json.response.data);
       console.log(response + "from the server");
     } catch (err) {
       console.error(err);
