@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 function Form() {
   const [text, setText] = useState('');
   const [response, setResponse] = useState('');
-  const [subject, setSubject] - useState('');
+  const [subject, setSubject] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
