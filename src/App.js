@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 function Form() {
   const [text, setText] = useState('');
   const [response, setResponse] = useState('');
+  const [subject, setSubject] - useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -24,6 +25,11 @@ function Form() {
 
   return (
     <form onSubmit={handleSubmit}>
+      <input
+        type="text"
+        value={subject}
+        onChange={(e) => setSubject(e.target.value)}
+      />
       <input
         type="text"
         value={text}
