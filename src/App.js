@@ -15,7 +15,7 @@ function Form() {
         body: JSON.stringify({ text }),
       });
       const json = await res.json();
-      setResponse(json.response.data);
+      setResponse(json.data); //think I need to change this
       console.log(response + "from the server");
     } catch (err) {
       console.error(err);
