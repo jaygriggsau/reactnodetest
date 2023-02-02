@@ -35,12 +35,12 @@ app.post('/api/openai', async (req, res) => {
       const openai = new OpenAIApi(configuration);
       const response = await openai.createCompletion({
         model: "text-davinci-003",
-        prompt: "Write 3 names for a boy:",
-        temperature: 0,
+        prompt: "Write 3 names for a baby boy:",
+        temperature: 0.7,
         max_tokens: 400,
         top_p: 1,
-        frequency_penalty: 0.0,
-        presence_penalty: 0.0,
+        frequency_penalty: 0.7,
+        presence_penalty: 0.7,
         stop: ["\n"],
       });
         return res.json({success: true, data: response.data.choices[0].text});
