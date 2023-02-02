@@ -8,7 +8,6 @@ var cors = require('cors')
 require('dotenv').config({path: __dirname + '/.env'})
 
 const PORT = process.env.PORT || 3001;
-const apiKey = "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";
 
 const app = express();
 app.use(bodyParser.json());
@@ -19,7 +18,7 @@ app.use(express.static(path.resolve(__dirname, '../client/build')));
 
 // Handle GET requests to /api route
 app.get("/api", (req, res) => {
-  res.json({ message: "Hello from server!" });
+  res.json({ message: "Hello from server!" + process.env.OPEN_AI_API_KEY});
 });
 /////
 
@@ -29,7 +28,7 @@ app.get("/api", (req, res) => {
 app.post('/api/openai', async (req, res) => {
     try {
       const configuration = new Configuration({
-        apiKey,
+        apiKey: process.env.OPEN_AI_API_KEY,
       });
 
       
