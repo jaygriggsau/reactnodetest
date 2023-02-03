@@ -36,7 +36,7 @@ function UnitPlan() {
         onChange={(e) => setText(e.target.value)}
       />
       <button type="submit">Submit Prompt</button>
-      {response && <section>{response}</section>}
+      {response && <p>{response}</p>}
     </form>
   );
 }
