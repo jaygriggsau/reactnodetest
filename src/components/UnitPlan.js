@@ -17,6 +17,8 @@ function UnitPlan() {
       });
       const json = await res.json();
       setResponse(json.data);
+      const responsePartArray = response.replace(/\n\n/g, '<br>').split("<br>");
+      setResponse(responsePartArray)
     } catch (err) {
       console.error(err);
     }
@@ -35,7 +37,9 @@ function UnitPlan() {
         onChange={(e) => setText(e.target.value)}
       />
       <button type="submit">Submit Prompt</button>
-      {response && <p>{response.replace(/\n\n/g, '<br>')}</p>}  
+      {response && <p>{response.forEach(part => {
+        <p>{part}</p>
+      })}</p>}  
     {/* Need to split on <br> then add each of those to an array, then display them one by one */}
     </form>
   );
