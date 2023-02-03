@@ -37,9 +37,7 @@ function UnitPlan() {
         onChange={(e) => setText(e.target.value)}
       />
       <button type="submit">Submit Prompt</button>
-      {response && <p>{response.forEach(part => {
-        <p>{part}</p>
-      })}</p>}  
+      {response && <p>{response}</p>}  
     {/* Need to split on <br> then add each of those to an array, then display them one by one */}
     </form>
   );
