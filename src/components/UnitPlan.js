@@ -26,15 +26,16 @@ function UnitPlan() {
   
   return (
     <form onSubmit={handleSubmit}>
-       <label for="subject">subject</label><br></br>
       <input
         type="text"
         value={subject}
+        placeholder= "Subject"
         onChange={(e) => setSubject(e.target.value)}
       />
       <input
         type="text"
         value={text}
+        placeholder = "Topic"
         onChange={(e) => setText(e.target.value)}
       />
       <button type="submit">Submit Prompt</button>
