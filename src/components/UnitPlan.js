@@ -38,11 +38,10 @@ function UnitPlan() {
       />
       <button type="submit">Submit Prompt</button>
       {response && <p>{response}</p>}
-      <p>
+      { response && <p>
         {response.map((textParcel, index) => (
         <p key={index}>{textParcel}</p>
-      ))}</p>
-    {/* Need to split then add each of those to an array, then display them one by one */}
+      ))}</p>}
     </form>
   );
 }
