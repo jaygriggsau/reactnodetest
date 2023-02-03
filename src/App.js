@@ -1,12 +1,15 @@
 import Header from './components/Header';
 import UnitPlan from './components/UnitPlan';
 
-function App() {
-  
+const App = () => {
+
   return (
     <section>
-      <Header />
-      <UnitPlan />
-    </section>
-  );
-}
+    <Header />
+    <UnitPlan />
+   </section>
+  )
+
+};
+
+export default App;
