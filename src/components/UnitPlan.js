@@ -16,8 +16,7 @@ function UnitPlan() {
         body: JSON.stringify({ text }),
       });
       const json = await res.json();
-      setResponse(json.data); //think I need to change this
-      console.log(response + "from the server");
+      setResponse(json.data);
     } catch (err) {
       console.error(err);
     }
@@ -36,7 +35,7 @@ function UnitPlan() {
         onChange={(e) => setText(e.target.value)}
       />
       <button type="submit">Submit Prompt</button>
-      {response && <p>{response.replace(/\n\n/g, '<br/>')}</p>}  
+      {response && <p>{response.replace(/\n\n/g, '<br>')}</p>}  
     </form>
   );
 }
