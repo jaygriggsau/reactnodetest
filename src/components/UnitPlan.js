@@ -39,7 +39,7 @@ function UnitPlan() {
       <button type="submit">Submit Prompt</button>
       {response && <p>{response}</p>}
       <p>{}</p>
-    {/* Need to split on <br> then add each of those to an array, then display them one by one */}
+    {/* Need to split then add each of those to an array, then display them one by one */}
     </form>
   );
 }
