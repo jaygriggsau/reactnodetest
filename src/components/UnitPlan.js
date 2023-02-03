@@ -37,7 +37,6 @@ function UnitPlan() {
         onChange={(e) => setText(e.target.value)}
       />
       <button type="submit">Submit Prompt</button>
-      {response && <p>{response}</p>}
       { response && <p>
         {response.map((textParcel, index) => (
         <p key={index}>{textParcel}</p>
