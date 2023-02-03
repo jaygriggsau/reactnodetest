@@ -13,17 +13,17 @@ function UnitPlan() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ text }),
+        body: JSON.stringify({ text, subject }),
       });
       const json = await res.json();
-      setResponse(json.data);
+      var responseText = json.data.split(/\n\n|\n/)
+      setResponse(responseText);
     } catch (err) {
       console.error(err);
     }
   };
 
-  var arrayTest = ["This", "Is", "A", "Teset"]
-
+  
   return (
     <form onSubmit={handleSubmit}>
       <input
@@ -38,7 +38,7 @@ function UnitPlan() {
       />
       <button type="submit">Submit Prompt</button>
       {response && <p>{response}</p>}
-      <p>{arrayTest}</p>
+      <p>{}</p>
     {/* Need to split on <br> then add each of those to an array, then display them one by one */}
     </form>
   );
