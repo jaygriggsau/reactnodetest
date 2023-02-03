@@ -26,6 +26,7 @@ function UnitPlan() {
   
   return (
     <form onSubmit={handleSubmit}>
+       <label for="subject">subject</label><br></br>
       <input
         type="text"
         value={subject}
