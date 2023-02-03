@@ -16,7 +16,7 @@ function UnitPlan() {
         body: JSON.stringify({ text, subject }),
       });
       const json = await res.json();
-      var responseText = json.data.split(/\n\n|\n/)
+      var responseText = json.data.split(/\n\n|\n/) //added line
       setResponse(responseText);
     } catch (err) {
       console.error(err);
@@ -38,7 +38,9 @@ function UnitPlan() {
       />
       <button type="submit">Submit Prompt</button>
       {response && <p>{response}</p>}
-      <p>{}</p>
+      <p>{response.map((textParcel, index) => (
+        <p key={index}>{textParcel}</p>
+      ))}</p>
     {/* Need to split then add each of those to an array, then display them one by one */}
     </form>
   );
