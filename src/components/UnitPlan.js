@@ -36,7 +36,7 @@ function UnitPlan() {
         onChange={(e) => setText(e.target.value)}
       />
       <button type="submit">Submit Prompt</button>
-      {response && <p>{response.replace(/\n\n/g, '<br/><br/>')}</p>}
+      {response && response.replace(/\n\n/g, '<br/><br/>')}  
     </form>
   );
 }
