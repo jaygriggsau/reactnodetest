@@ -26,6 +26,7 @@ function UnitPlan() {
   
   return (
     <form onSubmit={handleSubmit}>
+      
       <input
         type="text"
         value={subject}
@@ -39,10 +40,10 @@ function UnitPlan() {
         onChange={(e) => setText(e.target.value)}
       />
       <button type="submit">Submit Prompt</button>
-      { response && <p>
-        {response.map((textParcel, index) => (
+      { response && <section>{response.map((textParcel, index) => (
         <p key={index}>{textParcel}</p>
-      ))}</p>}
+      ))}</section>
+        }
     </form>
   );
 }
